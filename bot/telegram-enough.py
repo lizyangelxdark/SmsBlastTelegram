@@ -19,7 +19,7 @@ async def sms(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
                 await update.message.reply_text("Config dosyası ayarlanmamış\!\nConfig dosyasını ayarlamak için *_/config_* komutunu kullanın\.", parse_mode="MarkdownV2")
                 return 
             telno = update.message.text.split(" ")[1]
-            await update.message.reply_document("https://media.tenor.com/SWiGXYOM8eMAAAAC/russia-soviet.gif", f"*{adet} adet SMS Gönderiliyor \-\-\> {telno}*", parse_mode="MarkdownV2")
+            await update.message.reply_document("https://resmim.net/cdn/2023/06/05/SC0VR7.jpg", f"*{adet} adet SMS Gönderiliyor \-\-\> {telno}*", parse_mode="MarkdownV2")
             sms = SendSms(telno, "")
             while sms.adet < adet:
                 for attribute in dir(SendSms):
