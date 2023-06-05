@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-REPO="https://github.com/TeamUltroid/Ultroid.git"
+REPO="https://github.com/lizyangelxdark/SmsBlastTelegram"
 CURRENT_DIR="$(pwd)"
 ENV_FILE_PATH=".env"
-DIR="/root/TeamUltroid"
+DIR="/root/SmsBlastTelegram"
 
 while [ $# -gt 0 ]; do
     case "$1" in
@@ -70,12 +70,6 @@ check_dependencies() {
             echo -e "Python 3.8 or higher is required to run this bot." >&2
             exit 1
         fi
-        if ! command -v ffmpeg &>/dev/null || ! command -v mediainfo &>/dev/null || ! command -v neofetch &>/dev/null || ! command -v git &>/dev/null; then
-            echo -e "Some dependencies aren't installed. Please install ffmpeg, mediainfo, neofetch and git to run this bot." >&2
-            exit 1
-        fi
-    fi
-}
 
 check_python() {
     # check if python is installed
@@ -145,13 +139,6 @@ install_requirements() {
     pip3 install -q -r $DIR/resources/startup/optional-requirements.txt
 }
 
-railways_dep() {
-    if [ $RAILWAY_STATIC_URL ]; then
-        echo -e "Installing YouTube dependency... "
-        pip3 install -q yt-dlp
-    fi
-}
-
 misc_install() {
     if [ $SETUP_PLAYWRIGHT ]
     then
@@ -168,23 +155,9 @@ misc_install() {
             git pull
         else
             echo -e "Cloning VCBOT.."
-            git clone https://github.com/TeamUltroid/VcBot $DIR/vcbot
+            git clone https://github.com/lizyangelxdark/SmsBlastTelegram $DIR/vcbot
         fi
         pip3 install pytgcalls==3.0.0.dev23 && pip3 install av -q --no-binary av
-    fi
-}
-
-dep_install() {
-    echo -e "\n\nInstalling DB Requirement..."
-    if [ $MONGO_URI ]; then
-        echo -e "   Installing MongoDB Requirements..."
-        pip3 install -q pymongo[srv]
-    elif [ $DATABASE_URL ]; then
-        echo -e "   Installing PostgreSQL Requirements..."
-        pip3 install -q psycopg2-binary
-    elif [ $REDIS_URI ]; then
-        echo -e "   Installing Redis Requirements..."
-        pip3 install -q redis hiredis
     fi
 }
 
