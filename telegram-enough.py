@@ -3,8 +3,6 @@ from telegram.ext import Application, CommandHandler, ContextTypes, MessageHandl
 from sms import SendSms
 from time import sleep
 
-TOKEN = 
-
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text(f"Merhaba\!\nBirilerini rahatsız etmek istiyorsan doğru yere geldin\.\n*_/help_* yazarak komutları görebilirsin\.\nİyi eğlenceler\!\n\n[_Kaynak Kodu_](https://github.com/lizyangelxdark/SmsBlastTelegram/enough/)\n[_Twitter_](https://twitter.com/_none)", parse_mode='MarkdownV2')
 
